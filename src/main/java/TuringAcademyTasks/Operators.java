@@ -11,8 +11,7 @@ public class Operators {
         System.out.println("Enter the number: ");
         Scanner scan = new Scanner(System.in);
         int number = scan.nextInt();
-        boolean odd = true;
-        System.out.println(number+ (odd ? " is odd." : " is even."));
+        String num = (number % 2 == 0) ? "Even" : "Odd";
 //        int number1 = 15;
 //        int number2 = 7;
 //
