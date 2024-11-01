@@ -1,4 +1,4 @@
-package TuringAcademyTasks;
+package TuringAcademyTasks.TaskOfLesson4;
 
 import java.util.Scanner;
 

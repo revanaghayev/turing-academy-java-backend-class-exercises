@@ -1,6 +1,4 @@
-package TuringAcademyTasks;
-
-import org.w3c.dom.ls.LSOutput;
+package TuringAcademyTasks.DuringLessonTasks;
 
 import java.util.Scanner;
 
