@@ -1,6 +1,6 @@
 package TuringAcademyTasks.DuringLessonTasks;
 
-public class ArrayTaskApp {
+public class ArrayApp {
 
     public static void main(String[] args) {
 
