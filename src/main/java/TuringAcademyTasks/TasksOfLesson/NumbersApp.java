@@ -18,14 +18,21 @@ public class NumbersApp {
         String name = sc.nextLine();
         System.out.println("Let the game begin!");
         int[] allGuessed = new int[100];
-        int i = 0;
         String result = "";
-        //Checks the number if it is small, large or true guessed.
-        while (targetNumber <= 100) {
 
-            int guessedNumber = sc.nextInt();
-            allGuessed[i] = guessedNumber;
-            i++;
+        //Checks the number if it is small, large or true guessed.
+        while (true) {
+
+            int guessedNumber;
+            while (true) {
+                guessedNumber = sc.nextInt();
+                if (!sc.hasNextInt()) {
+                    System.out.println("Enter number");
+                } else {
+                    break;
+                }
+            }
+
             if (guessedNumber < targetNumber) {
                 result = "Your number is too small";
             } else if (guessedNumber > targetNumber) {
@@ -41,21 +48,28 @@ public class NumbersApp {
 
         //Sorts array's element from small to large.
         for (int g = 0; g < allGuessed.length; g++) {
+
             int minIndex = g;
             for (int j = 1; j < allGuessed.length - 1; j++) {
+
                 if (allGuessed[j] < allGuessed[minIndex]) {
+
                     minIndex = j;
                 }
+
                 int temp = allGuessed[minIndex];
                 allGuessed[minIndex] = allGuessed[g];
                 allGuessed[g] = temp;
             }
         }
+
         //All guessed numbers.
         System.out.println("Your numbers: ");
-        for (int k = 0; k < allGuessed.length; k++) {
-            if (allGuessed[k] != 0) {
-                System.out.print(allGuessed[k] + " ");
+        for (int i : allGuessed) {
+
+            if (i != 0) {
+
+                System.out.print(i + " ");
             }
         }
     }
