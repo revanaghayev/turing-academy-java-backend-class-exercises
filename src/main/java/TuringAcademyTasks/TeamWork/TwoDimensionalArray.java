@@ -10,9 +10,11 @@ public class TwoDimensionalArray {
         System.out.println("Enter number: ");
         int num = sc.nextInt();
         int[][] arr = new int[num][];
+
         int temp;
         int i;
         int j;
+
         for (i = 0; i < num; i++) {
             arr[i] = new int[i+1];
             temp = i+1;
@@ -27,6 +29,5 @@ public class TwoDimensionalArray {
             }
             System.out.println();
         }
-
     }
 }
