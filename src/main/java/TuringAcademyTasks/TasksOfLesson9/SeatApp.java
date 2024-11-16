@@ -11,6 +11,7 @@ public class SeatApp {
         Random rd = new Random();
         Scanner sc = new Scanner(System.in);
 
+        //Students array.
         String[] studentsRow1 = {"Aynur", "Dilbər", "Ella", "Əli", "Famil", "Fəxri", "Gülər", "Günay"};
         String[] studentsRow2 = {"İbrahim", "Lalə", "Məhəmməd", "Nicat", "Nihat", "Ömər", "Pərvin", "Raminə"};
         String[] studentsRow3 = {"Rəna", "Rəvan Ə.", "Rəvan A.", "Ruslan", "Seyran", "Sənubər", "Tural", "Yetər"};
@@ -21,52 +22,86 @@ public class SeatApp {
         studentsAll[1] = studentsRow2;
         studentsAll[2] = studentsRow3;
 
+        //Only teacher can randomize. So it checks if you are Vüsal or not.
+        System.out.println("Enter your name: ");
         while (true) {
 
-            String userInput = sc.nextLine();
-            String clearInput = userInput.trim().toLowerCase();
-            if (clearInput.equals("exit")) {
+            String name = sc.nextLine().trim().toLowerCase();
+            if (name.equals("vüsal") || name.equals("vusal")) {
+                System.out.println("Welcome to class Vusal!");
                 break;
-            } else if (!clearInput.equals("random")) {
-                System.out.println("Enter valid input!");
+            } else {
+                System.out.println("Access denied!");
+            }
+        }
+        System.out.println("Enter random keyword to randomize seats. If you want to exit enter exit keyword:");
+
+        //Randomization loop.
+        outerWhile:
+        while (true) {
+
+            //User input.
+            while (true) {
+
+                String clearInput = sc.nextLine().trim().toLowerCase();
+
+                if (clearInput.equals("exit")) {
+                    System.out.println("Randomization ended successfully!");
+                    break outerWhile;
+                } else if (clearInput.equals("random")) {
+                    break;
+                } else {
+                    System.out.println("Enter valid input!");
+                }
             }
 
+            //Already randomized seats.
             int[][] randomizedSeats = new int[3][8];
 
             Arrays.fill(randomizedSeats[0], 1);
             Arrays.fill(randomizedSeats[1], 1);
             Arrays.fill(randomizedSeats[2], 1);
 
+            //Randomization process.
             for (int i = 0; i < studentsAll.length; i++) {
 
-                outerLoop:
                 for (int j = 0; j < studentsAll[i].length; j++) {
 
-                    int rows = rd.nextInt(3);
-                    int columns = rd.nextInt(8);
-                    System.out.println("Works");
+                    int rows;
+                    int columns;
 
-                    for (int k = 0; k < randomizedSeats.length; k++) {
-                        for (int l = 0; l < randomizedSeats[k].length; l++) {
-                            if (randomizedSeats[k][l] == 0) {
-                                continue outerLoop;
+                    //Checks if random number entered twice.
+                    outerLoop:
+                    while (true) {
+
+                        rows = rd.nextInt(3);
+                        columns = rd.nextInt(8);
+                        for (int[] randomizedSeat : randomizedSeats) {
+                            for (int seat : randomizedSeat) {
+                                if (seat == 0) {
+                                    continue outerLoop;
+                                } else {
+                                    break outerLoop;
+                                }
                             }
                         }
                     }
 
+                    //Randomization operation.
                     randomizedSeats[rows][columns] = 0;
                     String temp = studentsAll[i][j];
                     studentsAll[i][j] = studentsAll[rows][columns];
-                    System.out.println(studentsAll[i][j]);
                     studentsAll[rows][columns] = temp;
                 }
             }
 
-            for (int i = 0; i < studentsAll.length; i++) {
+            //Updated students seats: each time when changed.
+            System.out.println("Randomized variant of seats: ");
+            for (String[] strings : studentsAll) {
 
                 System.out.println("----------------------------------------------------------------------------------");
-                for (int j = 0; j < studentsAll[i].length; j++) {
-                    System.out.print("| " + studentsAll[i][j] + " ");
+                for (String string : strings) {
+                    System.out.print("| " + string + " ");
                 }
                 System.out.print("|");
                 System.out.println();
@@ -74,11 +109,13 @@ public class SeatApp {
             System.out.println("----------------------------------------------------------------------------------");
         }
 
-        for (int i = 0; i < studentsAll.length; i++) {
+        //Updated students seats: last variant.
+        System.out.println("Last variant of seats: ");
+        for (String[] strings : studentsAll) {
 
             System.out.println("----------------------------------------------------------------------------------");
-            for (int j = 0; j < studentsAll[i].length; j++) {
-                System.out.print("| " + studentsAll[i][j] + " ");
+            for (String string : strings) {
+                System.out.print("| " + string + " ");
             }
             System.out.print("|");
             System.out.println();
