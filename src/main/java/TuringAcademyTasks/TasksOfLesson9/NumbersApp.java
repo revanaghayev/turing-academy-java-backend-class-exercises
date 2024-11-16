@@ -1,6 +1,5 @@
-package TuringAcademyTasks.TasksOfLesson;
+package TuringAcademyTasks.TasksOfLesson9;
 
-import javax.naming.PartialResultException;
 import java.util.Random;
 import java.util.Scanner;
 

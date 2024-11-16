@@ -1,4 +1,4 @@
-package TuringAcademyTasks.TasksOfLesson;
+package TuringAcademyTasks.TasksOfLesson9;
 
 import java.util.Scanner;
 
@@ -44,7 +44,7 @@ public class WeekPlannerApp {
             if (dayOfWeek.equals("exit")) {
 
                 break;
-            } else if ((dayOfWeek).equals("change "+dayOfWeek)) {
+            } else if ((dayOfWeek).equals("change"+dayOfWeek)) {
 
                 String change = sc.nextLine();
                 dayOfWeek = change.trim().toLowerCase();

@@ -1,4 +1,4 @@
-package TuringAcademyTasks.TasksOfLesson;
+package TuringAcademyTasks.TasksOfLesson9;
 
 import java.util.Arrays;
 import java.util.Random;
